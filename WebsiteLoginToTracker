@@ -1,0 +1,48 @@
+#! /usr/bin/env python3
+# This program is intended to login to the Lion Street website and utilize Tracker 4.0.
+# Import selenium and webdriver to use browser
+
+import time, selenium
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import Select
+
+
+# Enter login information
+user = input('Enter your username: ')
+pwd = input('Enter your password: ')
+
+# Enter policy parameters
+
+
+# Open chrome browser and Lion Street website login
+chromeDriver = 'chromedriverLocation'
+browser = webdriver.Chrome(chromeDriver)
+browser.get('https://yourwebsite.com/')
+assert "Your Website" in browser.title
+username = browser.find_element_by_id('user_login') # Find username input
+password = browser.find_element_by_id('user_pass') # Fins password input
+username.send_keys(user) # Send username input to webpage
+password.send_keys(pwd) # Send password input to webpage
+
+agree = browser.find_element_by_name('terms') # Finds agree to terms
+agree.click() # Checks agree to terms
+
+log_in = browser.find_element_by_name('login-submit') # Finds "Log In" button
+log_in.click() # Selects "Log In" button
+
+# Navigate to tracker
+
+#tracker = browser.find_element_by_xpath("//img[contains(@src, 'Tracker_logo-300x71.png')]/parent::a").click() # Finds "Tracker" button
+#tracker.click() # Selects "Tracker" button
+quicklinks = browser.find_element_by_link_text('Quick Links').click() # Finds and clicks "Quick Links" menu
+tracker = browser.find_element_by_link_text('TRACKER').click() # Finds and clicks "Tracker" button
+trackerFinal = browser.find_element_by_name('tracker').click() # Finds "Go to Tracker Now" button
+
+# Select all or individual carriers
+
+
+
+# Scrape the required data
+
